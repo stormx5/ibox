@@ -1,9 +1,12 @@
 package edu.csupomona.cs585.ibox.sync;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.security.GeneralSecurityException;
 import java.util.Arrays;
+import java.util.Collections;
 
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
@@ -17,8 +20,8 @@ import com.google.api.services.drive.DriveScopes;
 
 public class GoogleDriveServiceProvider {
 
-	private static String CLIENT_ID = "PASTE_YOUR_CLIENT_ID_HERE";
-	private static String CLIENT_SECRET = "PASTE_YOUR_CLIENT_SECRET_HERE";
+	private static String CLIENT_ID = "445239205599-ot1g1ek8n4nloiqcjon9dr6a6p2ubntk.apps.googleusercontent.com";
+	private static String CLIENT_SECRET = "TuK8-CmZ-dyPHbRbrG_2PQ8R";
 
 	private static String REDIRECT_URI = "urn:ietf:wg:oauth:2.0:oob";
 
@@ -33,6 +36,7 @@ public class GoogleDriveServiceProvider {
 			e.printStackTrace();
 		}
 	}
+	
 
 	public static GoogleDriveServiceProvider get() {
 		if (INSTANCE == null) {
@@ -40,7 +44,6 @@ public class GoogleDriveServiceProvider {
 		}
 		return INSTANCE;
 	}
-
 	public void initGoogleDriveServices() throws IOException {
 		HttpTransport httpTransport = new NetHttpTransport();
 		JsonFactory jsonFactory = new JacksonFactory();
