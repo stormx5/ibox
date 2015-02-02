@@ -59,13 +59,17 @@ public class IntegrationTest {
 		initGoogleDriveServices();
 		gmgr = new GoogleDriveFileSyncManager(drive);
 		root_path = System.getProperty("user.dir");
+		File TestDir = new File("TestDir");
+		if(!TestDir.exists())
+		{
+			TestDir.mkdir();
+		}
 
 	}
 	@Test
 	public void AddFileTest() throws IOException, InterruptedException {
 
 		File local_file_add = new File(root_path+"/TestDir/AddFileIntTest.txt");
-		//new Watch(watchdir).start();
 		if(!local_file_add.exists())
 		{
 			local_file_add.createNewFile();
